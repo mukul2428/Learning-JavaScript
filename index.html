@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            margin: 30px;
+        }
+
+        .toggle {
+            padding: 10px 14px;
+            background-color: red;
+        }
+
+        button {
+            width: max-content;
+            height: max-content;
+            font-size: large;
+            cursor: pointer;
+            margin: 20px;
+            color: black;
+            background-color: cornflowerblue;
+            border-radius: 10px;
+            text-align: center;
+            padding: 3px 10px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <span id="timenow"></span>
+
+    <div class="container">
+        <button class="btn">
+            <p>Hello Mukul</p>
+        </button>
+        <button class="btn">
+            <p>Welcome to Gemini</p>
+        </button>
+        <h3 id="heading"></h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem, sed iste! Beatae dolorem ducimus impedit
+            praesentium molestias sed sint mollitia, molestiae necessitatibus quasi! Voluptates exercitationem minus
+            explicabo vitae commodi, dolorum sed? Reiciendis recusandae quam hic pariatur necessitatibus possimus,
+            dolorem mollitia adipisci nesciunt saepe neque suscipit. Deleniti laboriosam libero reprehenderit quasi
+            nulla exercitationem, ut ab sequi reiciendis corrupti necessitatibus distinctio dolorum quos earum!
+            Architecto amet illum dolores facere ad nam qui fuga temporibus omnis natus, numquam quas esse voluptas
+            dolorem nemo id sit iusto possimus, aperiam commodi tempora. Hic itaque rerum error culpa beatae facere
+            sequi, odio, atque, in eius magni! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores ipsa
+            ad excepturi in deserunt quam repudiandae iste, eum ipsam cupiditate, quos dolorum neque quidem unde non
+            reprehenderit quibusdam eligendi laboriosam est! Dolorem culpa quis nisi fugiat repellat esse. Optio, rem
+            beatae. Enim in reprehenderit cupiditate id, eos eaque labore rerum rem quidem ab voluptatem. Rem voluptate
+            vitae debitis tempore exercitationem vel, voluptatibus repellendus laboriosam quas molestiae! Quos
+            perferendis ipsam magni eos deleniti alias voluptatibus possimus atque repellendus, assumenda minus tenetur
+            earum vero laudantium, cupiditate dolorum nam dolorem incidunt quod in! Laboriosam hic molestias facilis
+            inventore ratione maxime delectus illo at?</p>
+        <script src="js/script.js"></script>
+    </div>
+
+
+    <!--events-->
+
+    <button class="toggle" onclick="toggleScript()">Show/Hide</button>
+
+    <script>
+
+        let content = document.querySelector('.container');
+
+        //event listener mousein and mouseout
+        content.addEventListener('mouseout', function run() {
+            console.log("Mouse Out");
+        });
+        content.addEventListener('mouseover', function run() {
+            console.log("Mouse Inside");
+        });
+
+
+        //toggle button
+        function toggleScript() {
+            let button = document.querySelector('.toggle');
+            if (content.style.display != 'none') {
+                content.style.display = 'none';
+            }
+            else {
+                content.style.display = 'block';
+            }
+        }
+
+        //setTimeout
+        function greet(name, byeText) {
+            console.log("Hello! Good Morning " + name + "..." + byeText);
+        }
+        clear = setTimeout(greet, 3000, "Mukul", "How are you ?");
+        // clearTimeout(clear);
+
+        //setInterval
+        clearInt = setInterval(greet, 3000, "Mukul", "How are you ?");
+        clearInterval(clearInt);
+
+
+        //setting current time in html
+        function displayTime() {
+            let time = new Date();
+            // console.log(time);
+            document.getElementById("timenow").innerHTML = time;
+        }
+        setInterval(displayTime, 1000);
+
+
+        //date object
+
+        let date = new Date("2021-06-29");
+        console.log(date.getDate());
+        date.setDate(32);
+        console.log(date);
+
+
+        //arrow function
+        //1
+        let greet2 = (a,b) => {
+            console.log("Hello");
+            return a+b;
+        };
+        greet2();
+        console.log(greet2(12,13));
+
+        //2
+        let arrow = (a,b) => a+b;
+        console.log(arrow(1,4));
+
+        //3
+        let arrowfun = a => a/2;
+        console.log(arrowfun(7));
+
+        //4
+        setTimeout(() => {
+            console.log("Last Arrow Function");
+        }, 2000);
+
+        //5(for object)
+        let obj = {
+            greeting : "Good Morning! ",
+            names : ["Mukul", "Raghav", "Manish", "Pundhir"],
+            x : function(){
+                this.names.forEach(element => {
+                    console.log(this.greeting + "Kukdoo Koo..." + element);
+                });
+            }
+        }
+        obj.x();
+
+
+        //json
+
+        let jsonObject = {
+            name: "Mukul",
+            channel: "Tech Expert",
+            friend: "Gaurang",
+            food: "Paneer"
+        }
+        console.log(jsonObject);
+        //converting object to string
+        let jsonString = JSON.stringify(jsonObject);
+        console.log(jsonString);
+        //changing that string
+        let chngedString = jsonString.replace('Mukul','Raghav');
+        console.log(chngedString);
+        //converting string to json object
+        let jsonCObject = JSON.parse(chngedString);
+        console.log(jsonCObject);
+
+    </script>
+
+
+</body>
+
+</html>
